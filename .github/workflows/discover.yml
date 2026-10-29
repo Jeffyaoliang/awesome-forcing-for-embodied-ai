@@ -1,0 +1,25 @@
+name: Discover Forcing papers
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 1"
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Query arXiv
+        run: python scripts/discover.py
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: refresh Forcing candidates"
+          title: "chore: refresh unreviewed Forcing papers"
+          body: "Candidate-only automated discovery. Please verify papers manually."
+          branch: bot/arxiv-candidates
+          add-paths: data/discovered-candidates.md
