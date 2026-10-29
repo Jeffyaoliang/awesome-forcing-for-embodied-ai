@@ -1,0 +1,26 @@
+name: Suggest a Forcing paper
+description: Suggest a research entry with primary sources
+title: "[Paper] "
+labels: ["paper"]
+body:
+  - type: input
+    id: paper
+    attributes:
+      label: Paper title and arXiv/DOI URL
+    validations:
+      required: true
+  - type: input
+    id: code
+    attributes:
+      label: Official code or project URL
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: What is actually forced?
+      description: Identify the intervention and training signal
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Data, metrics, ablations and release status
