@@ -1,59 +1,65 @@
 #!/usr/bin/env python3
-"""Local, offline checks for the curated Forcing paper index."""
+"""Offline consistency checks; no network dependency."""
 import csv
 import re
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
-root = Path(__file__).resolve().parents[1]
-paper_path = root / "data" / "papers.csv"
-release_path = root / "data" / "release-audit.csv"
-required = {"title", "year", "paper_url", "code_url", "mechanism_family", "verification"}
+ROOT = Path(__file__).resolve().parents[1]
+def read_csv(path):
+    with (ROOT / path).open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        return reader.fieldnames or [], list(reader)
+fields, papers = read_csv("data/papers.csv")
+release_fields, releases = read_csv("data/release-audit.csv")
 errors = []
-with paper_path.open(encoding="utf-8", newline="") as f:
-    reader = csv.DictReader(f)
-    fields = set(reader.fieldnames or [])
-    if missing := required - fields:
-        errors.append(f"Missing paper columns: {sorted(missing)}")
-    papers = list(reader)
-seen_titles = {}
-seen_papers = {}
-def check_url(label, value):
-    if value and (urlparse(value).scheme not in {"https", "http"} or not urlparse(value).netloc):
-        errors.append(f"Invalid URL for {label}: {value}")
-for idx, p in enumerate(papers, start=2):
-    name = p.get("title", "").strip()
-    if not name:
-        errors.append(f"Row {idx}: missing title")
-        continue
-    key = name.casefold()
-    if key in seen_titles:
-        errors.append(f"Duplicate title rows {seen_titles[key]} and {idx}: {name}")
-    seen_titles[key] = idx
-    for col in ("paper_url", "code_url"):
-        check_url(f"{name}.{col}", p.get(col, ""))
-    url = p.get("paper_url", "")
-    m = re.search(r"arxiv\.org/abs/([0-9]{4}\.[0-9]{4,5})", url)
+required = {"title", "year", "paper_url", "code_url", "mechanism_family", "verification"}
+errors.extend("Missing column: " + c for c in required - set(fields))
+release_index = {r.get("title", "").casefold(): r for r in releases}
+seen_titles, seen_ids = set(), set()
+for n, row in enumerate(papers, 2):
+    title = row.get("title", "").strip()
+    name = title.casefold()
+    if not title or name in seen_titles:
+        errors.append(f"Line {n}: missing or duplicate title {title!r}")
+    seen_titles.add(name)
+    if not re.fullmatch(r"20[0-9]{2}", row.get("year", "")):
+        errors.append(f"{title}: invalid year")
+    if not row.get("mechanism_family") or not row.get("verification"):
+        errors.append(f"{title}: missing classification/verification")
+    if not row.get("paper_url"):
+        errors.append(f"{title}: missing primary-paper URL")
+    for key in ("paper_url", "code_url"):
+        value = row.get(key, "")
+        if value:
+            parsed = urlparse(value)
+            if parsed.scheme != "https" or not parsed.netloc:
+                errors.append(f"{title}: invalid {key} URL")
+    match = re.search(r"arxiv\.org/abs/(\d{4}\.\d{4,5})", row.get("paper_url", ""))
+    if match:
+        identifier = match.group(1)
+        if identifier in seen_ids:
+            errors.append(f"{title}: duplicate arXiv ID {identifier}")
+        seen_ids.add(identifier)
+    if name not in release_index:
+        errors.append(f"{title}: missing release-audit record")
+for row in releases:
+    if row.get("title", "").casefold() not in seen_titles:
+        errors.append(f"Orphan release audit: {row.get('title')}")
+if len(releases) != len(release_index):
+    errors.append("Duplicate release-audit title")
+readme = (ROOT / "README.md").read_text(encoding="utf-8")
+table_titles = []
+for line in readme.splitlines():
+    m = re.match(r"^\|\s*20\d{2}\s*\|\s*([^|]+)\s*\|", line)
     if m:
-        identifier = m.group(1)
-        if identifier in seen_papers:
-            errors.append(f"Duplicate arXiv ID: {identifier}")
-        seen_papers[identifier] = idx
-    if not p.get("verification"):
-        errors.append(f"Row {idx}: missing verification")
-with release_path.open(encoding="utf-8", newline="") as f:
-    releases = list(csv.DictReader(f))
-release_names = [p.get("title", "") for p in releases]
-for name in seen_titles:
-    if not any(n.casefold() == name for n in release_names):
-        errors.append(f"Missing audit row: {name}")
-if len(release_names) != len(set(x.casefold() for x in release_names)):
-    errors.append("Duplicate titles in release-audit.csv")
-for p in releases:
-    check_url(f"{p.get('title')}.source_url", p.get("source_url", ""))
-print(f"Checked {len(papers)} papers, {len(releases)} release-audit records")
+        table_titles.append(m.group(1).strip())
+if len(table_titles) != len(papers) or set(table_titles) != {p["title"] for p in papers}:
+    errors.append(f"README table differs from CSV: {len(table_titles)} listed / {len(papers)} indexed")
+print(f"Validated {len(papers)} paper rows, {len(releases)} release rows, {len(table_titles)} README entries")
 if errors:
-    print("\n".join("ERROR: " + x for x in errors), file=sys.stderr)
+    for e in errors:
+        print("ERROR:", e, file=sys.stderr)
     sys.exit(1)
-print("PASS: CSV structure, unique titles/arXiv IDs, URL format, release-audit coverage")
+print("PASS")
