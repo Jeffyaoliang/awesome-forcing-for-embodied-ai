@@ -14,6 +14,8 @@ A curated **mechanism-first** paper list of Forcing methods in embodied AI, robo
 - [Papers by embodied relevance](#papers-by-embodied-relevance)
 - [Evidence and reproducibility](#release--reproducibility-evidence)
 - [Maintenance and contributing](#maintenance)
+- [Changelog](CHANGELOG.md)
+- [Monthly research digest template](docs/monthly-digest-template.md)
 
 ## Start here: 8 essential papers
 
@@ -206,6 +208,10 @@ Inference, memory, and generation systems; robotic task gains should not be infe
 **Code listed ≠ runnable or independently reproduced.** All entries currently remain unexecuted in this project. Missing official releases are recorded as *not located*, not definitively *closed source*.
 
 ## Maintenance
+
+- [Changelog](CHANGELOG.md): dated repository changes and corrections.
+- [Monthly digest template](docs/monthly-digest-template.md): structured, evidence-aware monthly research roundup (not automatically published).
+- [Inclusion & editorial criteria](docs/INCLUSION_CRITERIA.md): strict paper, mechanism, relevance, and source requirements.
 
 - [Weekly arXiv discovery](.github/workflows/discover.yml): proposes candidate papers for human review.
 - [Automated metadata validation](.github/workflows/validate.yml): checks CSV schema, duplicate names and paper IDs, and URL syntax.
