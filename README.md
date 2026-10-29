@@ -197,6 +197,14 @@ Inference, memory, and generation systems; robotic task gains should not be infe
 
 </details>
 
+## AI-assisted paper review pilot
+
+An **8-paper evidence-based screening pilot** is now scaffolded. It separates research quality from Awesome List inclusion value and requires paper-level evidence for critiques. No model reviews have been run yet, and no automatic paper rejection or merge is enabled.
+
+- [Protocol and open-source reviewer baselines](docs/REVIEWER_PILOT.md)
+- [8-paper pilot status](data/reviewer-pilot.csv)
+- [Machine-readable review schema](reviews/schema.json)
+
 ## Release & reproducibility evidence
 
 - [Code / weights / evaluation matrix](data/release-audit.csv)
