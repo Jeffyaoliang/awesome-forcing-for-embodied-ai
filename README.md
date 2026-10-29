@@ -197,6 +197,14 @@ Inference, memory, and generation systems; robotic task gains should not be infe
 
 </details>
 
+## OpenReviewer deployment (GPU required)
+
+- [Deployment guide](deploy/README.md)
+- [Local-only vLLM Docker Compose](deploy/docker-compose.yml)
+- [Paper review inference client](scripts/review_openreviewer.py)
+
+**Deployment configuration only:** no GPU available in this chat environment; model weights have not been loaded and no OpenReviewer-8B result is claimed.
+
 ## AI-assisted paper review pilot
 
 An **8-paper evidence-based screening pilot** is now scaffolded. It separates research quality from Awesome List inclusion value and requires paper-level evidence for critiques. No model reviews have been run yet, and no automatic paper rejection or merge is enabled.
