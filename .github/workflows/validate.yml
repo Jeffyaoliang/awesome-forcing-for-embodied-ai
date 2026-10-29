@@ -11,6 +11,9 @@ on:
       - "scripts/validate.py"
       - ".github/workflows/validate.yml"
   workflow_dispatch:
+concurrency:
+  group: validation-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
