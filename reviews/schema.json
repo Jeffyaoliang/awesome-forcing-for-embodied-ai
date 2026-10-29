@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence-based Forcing paper review",
+  "type": "object",
+  "required": [
+    "paper_id",
+    "model_id",
+    "paper_sha256",
+    "research_quality",
+    "curation_value",
+    "claims",
+    "recommendation",
+    "human_verified"
+  ],
+  "properties": {
+    "paper_id": {
+      "type": "string"
+    },
+    "model_id": {
+      "type": "string"
+    },
+    "paper_sha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "research_quality": {
+      "type": "object",
+      "required": [
+        "strengths",
+        "limitations"
+      ],
+      "properties": {
+        "strengths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "curation_value": {
+      "type": "object",
+      "required": [
+        "forcing_mechanism",
+        "embodied_relevance",
+        "rationale"
+      ],
+      "properties": {
+        "forcing_mechanism": {
+          "type": "string"
+        },
+        "embodied_relevance": {
+          "enum": [
+            "core",
+            "transferable",
+            "adjacent",
+            "uncertain"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim",
+          "source_location",
+          "verification"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "source_location": {
+            "type": "string"
+          },
+          "verification": {
+            "enum": [
+              "unverified",
+              "supported",
+              "contradicted"
+            ]
+          }
+        }
+      }
+    },
+    "recommendation": {
+      "enum": [
+        "include",
+        "include_with_caveats",
+        "defer",
+        "exclude",
+        "abstain"
+      ]
+    },
+    "human_verified": {
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}
