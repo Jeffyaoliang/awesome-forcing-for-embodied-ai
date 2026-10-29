@@ -1,9 +1,9 @@
 paper_id,title,paper_url,status,review_path,human_verified
-2407.01392,Diffusion Forcing,https://arxiv.org/abs/2407.01392,not_started,,no
+2407.01392,Diffusion Forcing,https://arxiv.org/abs/2407.01392,draft_generated,reviews/2407.01392-draft.md,no
 2506.08009,Self Forcing,https://arxiv.org/abs/2506.08009,not_started,,no
 2509.25161,Rolling Forcing,https://arxiv.org/abs/2509.25161,not_started,,no
 2507.07982,Geometry Forcing,https://arxiv.org/abs/2507.07982,not_started,,no
-2606.28128,PhysisForcing,https://arxiv.org/abs/2606.28128,not_started,,no
+2606.28128,PhysisForcing,https://arxiv.org/abs/2606.28128,draft_generated,reviews/2606.28128-draft.md,no
 2608.24885,WorldSync (Action-Forcing),https://arxiv.org/abs/2608.24885,not_started,,no
 2606.11187,Next Forcing,https://arxiv.org/abs/2606.11187,not_started,,no
 2610.23894,Language-Forcing,https://arxiv.org/abs/2610.23894,not_started,,no
