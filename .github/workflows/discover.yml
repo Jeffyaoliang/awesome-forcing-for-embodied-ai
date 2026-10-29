@@ -4,6 +4,7 @@ on:
     paths:
       - ".github/workflows/discover.yml"
       - "scripts/discover.py"
+      - "scripts/write_status.py"
   workflow_dispatch:
   schedule:
     - cron: "17 3 * * 1"
@@ -19,11 +20,31 @@ jobs:
         with:
           python-version: "3.12"
       - name: Query arXiv
+        id: arxiv
         run: python scripts/discover.py
-      - uses: peter-evans/create-pull-request@v7
+      - name: Open candidate PR
+        if: steps.arxiv.outcome == 'success'
+        id: candidate_pr
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: refresh Forcing candidates"
           title: "chore: refresh unreviewed Forcing papers"
           body: "Candidate-only automated discovery. Please verify papers manually."
           branch: bot/arxiv-candidates
           add-paths: data/discovered-candidates.md
+      - name: Record discovery result
+        if: always()
+        env:
+          REPORT_NAME: discovery
+          REPORT_RESULT: ${{ steps.arxiv.outcome == 'success' && steps.candidate_pr.outcome || steps.arxiv.outcome }}
+        run: python scripts/write_status.py
+      - name: Commit discovery status
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/discovery-status.json
+          if ! git diff --cached --quiet; then
+            git commit -m "ci: record discovery status [skip ci]"
+            git push
+          fi
