@@ -37,6 +37,11 @@ A **mechanism-first curated index** of Forcing methods in embodied AI, world/act
 
 The [weekly GitHub Action](.github/workflows/discover.yml) queries arXiv and proposes changes to [unreviewed candidates](data/discovered-candidates.md) in a pull request. Human review is required before adding verified entries to the index.
 
+## Release & reproducibility audit
+
+- [Code/weights/evaluation availability inventory (33 entries)](data/release-audit.csv)
+- [Official repository audit (2026-10-29)](docs/release-audit-2026-10-29.md)
+
 ## Reproducibility
 
 The [preliminary audit](docs/audit.md) separates public source announcements from actual execution and independent replication. **No reported metric has yet been independently reproduced by this project.**
