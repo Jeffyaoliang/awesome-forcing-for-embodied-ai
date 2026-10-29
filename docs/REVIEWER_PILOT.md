@@ -1,6 +1,6 @@
 # AI-assisted paper curation: 8-paper pilot
 
-**Status:** pipeline scaffold, not completed model reviews. No AI judgments have been generated or validated. Do not treat reviewer output as peer review or automatic acceptance.
+**Status (2026-10-29):** two GPT-6 evidence-grounded draft reports generated from arXiv HTML; six papers not started. These are not OpenReviewer/CMU model runs and no human verification or metric replication has been performed. Do not treat reviewer output as peer review or automatic acceptance.
 
 ## Goal
 
