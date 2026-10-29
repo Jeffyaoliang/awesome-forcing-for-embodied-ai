@@ -2,7 +2,7 @@
 
 A **mechanism-first curated index** of Forcing methods in embodied AI, world/action models, robotics, and adjacent video generation.
 
-> **v0.2 / work in progress.** The [machine-readable index](data/papers.csv) contains 33 entries: 8 initial papers and 25 **unverified candidates**. This is not a benchmark leaderboard.
+> **v0.2 / work in progress.** The [machine-readable index](data/papers.csv) contains 33 entries: **22 reviewed against primary paper/project sources**, **5 pending initial-paper checks**, and **6 secondary-source-only entries**. Reviewed means bibliographic/method verification, not code execution. This is not a benchmark leaderboard.
 
 ## Why this list?
 
@@ -49,7 +49,7 @@ The [preliminary audit](docs/audit.md) separates public source announcements fro
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and the paper submission issue template. Missing URLs are intentionally left blank rather than guessed.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the paper submission issue template. Missing URLs are intentionally left blank rather than guessed. See the [verification ledger](docs/verification-2026-10-29.md) for evidence levels and unresolved entries.
 
 ## Related resources
 
