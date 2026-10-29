@@ -25,6 +25,7 @@ jobs:
       - name: Open candidate PR
         if: steps.arxiv.outcome == 'success'
         id: candidate_pr
+        continue-on-error: true
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: refresh Forcing candidates"
@@ -36,7 +37,7 @@ jobs:
         if: always()
         env:
           REPORT_NAME: discovery
-          REPORT_RESULT: ${{ steps.arxiv.outcome == 'success' && steps.candidate_pr.outcome || steps.arxiv.outcome }}
+          REPORT_RESULT: ${{ steps.arxiv.outcome != 'success' && 'query_failed' || steps.candidate_pr.outcome != 'success' && 'pr_update_failed' || 'success' }}
         run: python scripts/write_status.py
       - name: Commit discovery status
         if: always()
