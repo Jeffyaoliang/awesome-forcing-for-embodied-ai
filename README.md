@@ -1,64 +1,61 @@
 # Awesome Forcing for Embodied AI
 
-A **mechanism-first curated index** of Forcing methods in embodied AI, world/action models, robotics, and adjacent video generation.
+A curated **mechanism-first** paper list of Forcing methods in embodied AI, robotic world/action models, and adjacent video generation.
 
-> **v0.2 / work in progress.** The [machine-readable index](data/papers.csv) contains 33 entries: **25 reviewed against primary paper/project sources**, **2 pending initial-paper checks**, and **6 secondary-source-only entries**. Reviewed means bibliographic/method verification, not code execution. This is not a benchmark leaderboard.
+**33 indexed entries · primary-source review in progress · execution verification pending.**
 
-## Why this list?
+[Browse paper index](data/papers.csv) · [Code, checkpoints & evaluation](data/release-audit.csv) · [Contribute](CONTRIBUTING.md)
 
-"Forcing" is not one unified algorithm. We classify **what is forced and where the intervention enters** rather than grouping papers merely by name.
+## Taxonomy
 
-## Mechanism taxonomy
+```mermaid
+flowchart TD
+  F["Forcing methods"] --> T["Training interventions"]
+  F --> I["Inference interventions"]
+  T --> N["Temporal/noise schedules"]
+  T --> R["Self-rollout distribution alignment"]
+  T --> P["Geometry/physics/language/action supervision"]
+  I --> K["KV cache and memory"]
+  I --> A["Action-conditioned generation"]
+```
 
-| Family | Intervention | Example |
-|---|---|---|
-| Temporal / noise forcing | Per-position diffusion/noise schedules | Diffusion Forcing |
-| Rollout / distribution forcing | Self-generated history and rollout alignment | Fréchet Forcing |
-| Physical / structural supervision | Geometry, motion and consistency constraints | PhysisForcing |
-| Action conditioning | Action adherence in predicted dynamics | WorldSync |
-| Action representation | Discrete guidance for continuous control | Discrete Forcing |
-| Semantic supervision | Language as training signal | Language-Forcing |
-| Future prediction | Multi-horizon / multi-chunk objective | Next Forcing |
+The term **Forcing** is used for different interventions, not a single unified technique.
 
 ## Selected papers
 
-| Paper | Primary source | Implementation | Verification |
-|---|---|---|---|
-| Diffusion Forcing (2024) | [arXiv](https://arxiv.org/abs/2407.01392) | [Project](https://boyuan.space/diffusion-forcing) | reviewed |
-| PhysisForcing (2026) | [arXiv](https://arxiv.org/abs/2606.28128) | [GitHub](https://github.com/DAGroup-PKU/PhysisForcing) | reviewed |
-| Fréchet Forcing (2026) | [arXiv](https://arxiv.org/abs/2610.25666) | [GitHub](https://github.com/Zhao-Yian/Frechet_Forcing) | reviewed |
-| Relational Geometry Forcing (2026) | [arXiv](https://arxiv.org/abs/2610.29282) | not confirmed | pending |
-| WorldSync / Action-Forcing (2026) | [arXiv](https://arxiv.org/abs/2608.24885) | not confirmed | pending |
-| Discrete Forcing (2026) | [arXiv](https://arxiv.org/abs/2609.39526) | not confirmed | pending |
-| Language-Forcing (2026) | [arXiv](https://arxiv.org/abs/2610.23894) | not confirmed | pending |
-| Next Forcing (2026) | [arXiv](https://arxiv.org/abs/2606.11187) | not confirmed | pending |
+| Year | Work | Main mechanism | Paper | Code / project |
+|---|---|---|---|---|
+| 2024 | Diffusion Forcing | Temporal/noise | [Paper](https://arxiv.org/abs/2407.01392) | [Code](https://github.com/buoyancy99/diffusion-forcing) |
+| 2025 | Self Forcing | Self-rollout alignment | [Paper](https://arxiv.org/abs/2506.08009) | [Code](https://github.com/guandeh17/Self-Forcing) |
+| 2025 | Rolling Forcing | Rolling denoising | [Paper](https://arxiv.org/abs/2509.25161) | [Code](https://github.com/TencentARC/RollingForcing) |
+| 2026 | PhysisForcing | Physical consistency | [Paper](https://arxiv.org/abs/2606.28128) | [Code](https://github.com/DAGroup-PKU/PhysisForcing) |
+| 2026 | Fréchet Forcing | Rollout distribution | [Paper](https://arxiv.org/abs/2610.25666) | [Code](https://github.com/Zhao-Yian/Frechet_Forcing) |
+| 2026 | Geometry Forcing | Geometry supervision | [Paper/index](data/papers.csv) | [Code](https://github.com/CIntellifusion/GeometryForcing) |
+| 2026 | Next Forcing | Multi-chunk future prediction | [Paper](https://arxiv.org/abs/2606.11187) | [Code](https://github.com/robbyant-research/next-forcing) |
+| 2026 | Causal Forcing | Causal autoregressive distillation | [Paper](https://arxiv.org/abs/2602.02214) | [Code](https://github.com/thu-ml/Causal-Forcing) |
+| 2026 | Delta Forcing | Action conditioning | [Paper/index](data/papers.csv) | [Code](https://github.com/wyhallenwu/DeltaForcing) |
+| 2026 | Forcing-KV | KV-cache optimization | [Paper](https://arxiv.org/abs/2605.09681) | [Code](https://github.com/zju-jiyicheng/Forcing-KV) |
+| 2026 | Pyramid Forcing | Training-free KV optimization | [Paper](https://arxiv.org/abs/2605.13111) | [Code](https://github.com/IF-LAB-PKU/Pyramid-Forcing) |
 
-## Automatic discovery
+**[Full 33-entry machine-readable paper list](data/papers.csv)** includes candidate entries that are not yet primary-verified. Papers are indexed for research navigation; individual release claims must be checked against the separate [availability audit](data/release-audit.csv).
 
-The [weekly GitHub Action](.github/workflows/discover.yml) queries arXiv and proposes changes to [unreviewed candidates](data/discovered-candidates.md) in a pull request. Human review is required before adding verified entries to the index.
+## Release & reproducibility evidence
 
-## Release & reproducibility audit
+- [Code / weights / evaluation matrix](data/release-audit.csv)
+- [Bibliography verification notes](docs/verification-2026-10-29.md)
+- [Release audit](docs/release-audit-2026-10-29.md)
+- [Expanded release audit](docs/release-audit-expansion-2026-10-29.md)
+- [Follow-up checks](docs/remaining-17-release-verification-2026-10-29.md)
 
-- [Code/weights/evaluation availability inventory (33 entries)](data/release-audit.csv)
-- [Official repository audit (2026-10-29)](docs/release-audit-2026-10-29.md)
-- [Expanded 28-entry release evidence audit](docs/release-audit-expansion-2026-10-29.md)
-- [Follow-up primary-source verification of 17 remaining ambiguous entries](docs/remaining-17-release-verification-2026-10-29.md)
+**Code listed ≠ runnable or independently reproduced.** All entries currently remain unexecuted in this project. Missing official releases are recorded as *not located*, not definitively *closed source*.
 
-## Reproducibility
+## Maintenance
 
-The [preliminary audit](docs/audit.md) separates public source announcements from actual execution and independent replication. **No reported metric has yet been independently reproduced by this project.**
+- [Weekly arXiv discovery](.github/workflows/discover.yml): proposes candidate papers for human review.
+- [Automated metadata validation](.github/workflows/validate.yml): checks CSV schema, duplicate names and paper IDs, and URL syntax.
+- [Contribution guidelines](CONTRIBUTING.md): explain how to suggest or correct entries.
 
-## Research questions
-
-- Which forcing interventions address exposure bias, physical consistency, or control adherence?
-- Which results are confounded by backbone, dataset, additional supervision or compute?
-- Could closed-loop robot failure diagnoses drive adaptive selection of forcing mechanisms?
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) and the paper submission issue template. Missing URLs are intentionally left blank rather than guessed. See the [verification ledger](docs/verification-2026-10-29.md) for evidence levels and unresolved entries.
-
-## Related resources
+## Related lists
 
 - [Awesome-Video-Forcing](https://github.com/Tammytcl/Awesome-Video-Forcing)
 - [Awesome-World-Action-Models](https://github.com/RCL-Robotics/Awesome-World-Action-Models)
@@ -66,4 +63,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and the paper submission issue template. 
 
 ## License
 
-[MIT License](LICENSE) for this repository's original material. Linked research and third-party code retain their own licenses.
+[MIT](LICENSE) for original repository content. Third-party papers and code keep their own licenses.
