@@ -1,5 +1,9 @@
 name: Discover Forcing papers
 on:
+  push:
+    paths:
+      - ".github/workflows/discover.yml"
+      - "scripts/discover.py"
   workflow_dispatch:
   schedule:
     - cron: "17 3 * * 1"
