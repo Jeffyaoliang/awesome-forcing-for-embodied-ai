@@ -1,9 +1,9 @@
 {
   "workflow": "discovery",
-  "result": "failure",
-  "run_id": "40809602280",
+  "result": "pr_update_failed",
+  "run_id": "40809721037",
   "run_attempt": "1",
-  "sha": "a45b207f2c6ca2e623653d6f540e2c8095104a26",
+  "sha": "8f05ea6461f613d5ece244065e8222ca78450fc1",
   "event": "push",
-  "updated_at": "2026-10-29T03:00:04.520462+00:00"
+  "updated_at": "2026-10-29T03:01:12.183762+00:00"
 }
