@@ -6,6 +6,16 @@ A curated **mechanism-first** paper list of Forcing methods in embodied AI, robo
 
 [Browse paper index](data/papers.csv) · [Code, checkpoints & evaluation](data/release-audit.csv) · [Contribute](CONTRIBUTING.md)
 
+## Embodied relevance
+
+| Scope | Count | Inclusion rule |
+|---|---:|---|
+| **Core embodied** | 9 | Robot control, manipulation/navigation or robot world/action models |
+| **Transferable world models** | 14 | Video/world modeling mechanisms potentially useful in embodied learning |
+| **Adjacent generation & systems** | 10 | Video inference, temporal memory or KV-cache optimizations without confirmed robot-policy evidence |
+
+See [the paper-by-paper scope review](docs/embodied-scope-review.md) and the `embodied_relevance` field in [papers.csv](data/papers.csv). **Relevance classification is an editorial judgment, not a validated performance ranking.**
+
 ## Taxonomy
 
 ```mermaid
