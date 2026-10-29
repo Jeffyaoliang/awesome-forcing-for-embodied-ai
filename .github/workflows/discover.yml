@@ -10,7 +10,6 @@ on:
     - cron: "17 3 * * 1"
 permissions:
   contents: write
-  pull-requests: write
 jobs:
   discover:
     runs-on: ubuntu-latest
@@ -22,30 +21,36 @@ jobs:
       - name: Query arXiv
         id: arxiv
         run: python scripts/discover.py
-      - name: Open candidate PR
+      - name: Update existing candidate PR branch
         if: steps.arxiv.outcome == 'success'
-        id: candidate_pr
-        continue-on-error: true
-        uses: peter-evans/create-pull-request@v7
-        with:
-          commit-message: "chore: refresh Forcing candidates"
-          title: "chore: refresh unreviewed Forcing papers"
-          body: "Candidate-only automated discovery. Please verify papers manually."
-          branch: bot/arxiv-candidates
-          add-paths: data/discovered-candidates.md
+        id: candidate_branch
+        run: |
+          cp data/discovered-candidates.md "$RUNNER_TEMP/discovered-candidates.md"
+          git fetch origin bot/arxiv-candidates
+          git checkout -B bot/arxiv-candidates origin/bot/arxiv-candidates
+          cp "$RUNNER_TEMP/discovered-candidates.md" data/discovered-candidates.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/discovered-candidates.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh unreviewed Forcing papers [skip ci]"
+            git push origin HEAD:bot/arxiv-candidates
+          fi
+          git checkout main
       - name: Record discovery result
         if: always()
         env:
           REPORT_NAME: discovery
-          REPORT_RESULT: ${{ steps.arxiv.outcome != 'success' && 'query_failed' || steps.candidate_pr.outcome != 'success' && 'pr_update_failed' || 'success' }}
+          REPORT_RESULT: ${{ steps.arxiv.outcome != 'success' && 'query_failed' || steps.candidate_branch.outcome != 'success' && 'branch_update_failed' || 'success' }}
         run: python scripts/write_status.py
       - name: Commit discovery status
         if: always()
         run: |
+          git checkout main
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reports/discovery-status.json
           if ! git diff --cached --quiet; then
             git commit -m "ci: record discovery status [skip ci]"
-            git push
+            git push origin HEAD:main
           fi
