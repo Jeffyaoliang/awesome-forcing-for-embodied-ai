@@ -30,7 +30,7 @@ The term **Forcing** is used for different interventions, not a single unified t
 | 2025 | Rolling Forcing | Rolling denoising | [Paper](https://arxiv.org/abs/2509.25161) | [Code](https://github.com/TencentARC/RollingForcing) |
 | 2026 | PhysisForcing | Physical consistency | [Paper](https://arxiv.org/abs/2606.28128) | [Code](https://github.com/DAGroup-PKU/PhysisForcing) |
 | 2026 | Fréchet Forcing | Rollout distribution | [Paper](https://arxiv.org/abs/2610.25666) | [Code](https://github.com/Zhao-Yian/Frechet_Forcing) |
-| 2026 | Geometry Forcing | Geometry supervision | [Paper/index](data/papers.csv) | [Code](https://github.com/CIntellifusion/GeometryForcing) |
+| 2025 | Geometry Forcing | Geometry supervision | [Paper/index](data/papers.csv) | [Code](https://github.com/CIntellifusion/GeometryForcing) |
 | 2026 | Next Forcing | Multi-chunk future prediction | [Paper](https://arxiv.org/abs/2606.11187) | [Code](https://github.com/robbyant-research/next-forcing) |
 | 2026 | Causal Forcing | Causal autoregressive distillation | [Paper](https://arxiv.org/abs/2602.02214) | [Code](https://github.com/thu-ml/Causal-Forcing) |
 | 2026 | Delta Forcing | Action conditioning | [Paper/index](data/papers.csv) | [Code](https://github.com/wyhallenwu/DeltaForcing) |
