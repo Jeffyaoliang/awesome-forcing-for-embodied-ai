@@ -207,6 +207,15 @@ Inference, memory, and generation systems; robotic task gains should not be infe
 
 **Code listed ≠ runnable or independently reproduced.** All entries currently remain unexecuted in this project. Missing official releases are recorded as *not located*, not definitively *closed source*.
 
+## Automation status
+
+The workflows write machine-readable status after each run (when repository write permissions allow):
+
+- [Validation status](reports/validation-status.json)
+- [Discovery status](reports/discovery-status.json)
+
+A missing report means the workflow has not successfully written a report yet; it **does not** prove a run succeeded or failed. Status reports describe the workflow run, not independent paper reproduction. Pull-request validation cannot write to `main` by design.
+
 ## Maintenance
 
 - [Changelog](CHANGELOG.md): dated repository changes and corrections.
