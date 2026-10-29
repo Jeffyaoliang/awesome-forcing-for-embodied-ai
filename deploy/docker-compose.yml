@@ -1,0 +1,29 @@
+services:
+  openreviewer:
+    image: vllm/vllm-openai:v0.11.2
+    runtime: nvidia
+    ipc: host
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ${HF_CACHE:-${HOME}/.cache/huggingface}:/root/.cache/huggingface
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+    command:
+      - --model
+      - maxidl/Llama-OpenReviewer-8B
+      - --served-model-name
+      - openreviewer-8b
+      - --dtype
+      - bfloat16
+      - --max-model-len
+      - "8192"
+      - --gpu-memory-utilization
+      - "0.85"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
