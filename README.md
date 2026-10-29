@@ -42,6 +42,7 @@ The [weekly GitHub Action](.github/workflows/discover.yml) queries arXiv and pro
 - [Code/weights/evaluation availability inventory (33 entries)](data/release-audit.csv)
 - [Official repository audit (2026-10-29)](docs/release-audit-2026-10-29.md)
 - [Expanded 28-entry release evidence audit](docs/release-audit-expansion-2026-10-29.md)
+- [Follow-up primary-source verification of 17 remaining ambiguous entries](docs/remaining-17-release-verification-2026-10-29.md)
 
 ## Reproducibility
 
