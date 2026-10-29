@@ -2,7 +2,7 @@
 
 A curated **mechanism-first** paper list of Forcing methods in embodied AI, robotic world/action models, and adjacent video generation.
 
-**33 indexed entries · primary-source review in progress · execution verification pending.**
+**33 indexed entries · 33 primary-paper records reviewed · execution verification pending.**
 
 [Browse paper index](data/papers.csv) · [Code, checkpoints & evaluation](data/release-audit.csv) · [Contribute](CONTRIBUTING.md)
 
@@ -23,7 +23,7 @@ The term **Forcing** is used for different interventions, not a single unified t
 
 ## Papers by forcing mechanism
 
-All **33 entries** are shown below. **Reviewed** means source-level bibliographic review, not experimentally reproduced; **candidate / secondary-listed / pending** entries remain provisional. Links are only provided when present in the index or release audit.
+All **33 entries** are shown below. **Reviewed** means source-level bibliographic review, not experimentally reproduced. A verified paper does not imply released code. Links are only provided when present in the index or release audit.
 
 ### Rollout & exposure bias
 
@@ -31,7 +31,7 @@ All **33 entries** are shown below. **Reviewed** means source-level bibliographi
 |---|---|---|---|---|---|
 | 2026 | AR Forcing | Autoregressive training with model-generated navigation context | [Paper](https://arxiv.org/abs/2605.31314) | — | Reviewed |
 | 2026 | Causal Forcing | Autoregressive teacher for ODE initialization in causal distillation | [Paper](https://arxiv.org/abs/2602.02214) | [Source](https://github.com/thu-ml/Causal-Forcing) | Reviewed |
-| 2026 | Causal Forcing++ | Mechanism not yet verified | — | [Source](https://github.com/thu-ml/Causal-Forcing) | Secondary only |
+| 2026 | Causal Forcing++ | Causal consistency distillation for 1-2 step frame-wise autoregression | [Paper](https://arxiv.org/abs/2605.15141) | [Source](https://github.com/thu-ml/Causal-Forcing) | Reviewed |
 | 2026 | Fréchet Forcing | Long rollout distribution matching | [Paper](https://arxiv.org/abs/2610.25666) | [Source](https://github.com/Zhao-Yian/Frechet_Forcing) | Reviewed |
 | 2026 | Self-Aligned Forcing | Differentiable denoising-stage-aligned noisy histories | [Paper](https://arxiv.org/abs/2609.38114) | — | Reviewed |
 | 2026 | Step Forcing (RoboWorld) | Anchored and one-step self-forwarded robot rollout contexts | [Paper](https://arxiv.org/abs/2607.01060) | [Source](https://byeongguks.github.io/RoboWorld/) | Reviewed |
@@ -42,7 +42,7 @@ All **33 entries** are shown below. **Reviewed** means source-level bibliographi
 
 | Year | Paper / method | Main intervention | Paper | Code / project | Evidence |
 |---|---|---|---|---|---|
-| 2026 | Steady-Forcing | Mechanism not yet verified | — | [Source](https://github.com/minar09/steady-forcing) | Secondary only |
+| 2026 | Steady-Forcing | Dual spatial and motion memory for fixed-camera long rollouts | [Paper](https://arxiv.org/abs/2606.14732) | [Source](https://github.com/minar09/steady-forcing) | Reviewed |
 | 2025 | Rolling Forcing | Joint rolling-window denoising with progressive noise and attention sink | [Paper](https://arxiv.org/abs/2509.25161) | [Source](https://github.com/TencentARC/RollingForcing) | Reviewed |
 | 2024 | Diffusion Forcing | Per-token diffusion noise levels | [Paper](https://arxiv.org/abs/2407.01392) | [Source](https://boyuan.space/diffusion-forcing) | Reviewed |
 
@@ -57,27 +57,27 @@ All **33 entries** are shown below. **Reviewed** means source-level bibliographi
 | Year | Paper / method | Main intervention | Paper | Code / project | Evidence |
 |---|---|---|---|---|---|
 | 2026 | Relational Geometry Forcing | Pairwise geometry relations from frozen 3D foundation model | [Paper](https://arxiv.org/abs/2610.29282) | — | Reviewed |
-| 2025 | Geometry Forcing | Mechanism not yet verified | — | [Source](https://github.com/CIntellifusion/GeometryForcing) | Secondary only |
+| 2025 | Geometry Forcing | Align video diffusion intermediate features with pretrained 3D geometric features | [Paper](https://arxiv.org/abs/2507.07982) | [Source](https://github.com/CIntellifusion/GeometryForcing) | Reviewed |
 
 ### Language
 
 | Year | Paper / method | Main intervention | Paper | Code / project | Evidence |
 |---|---|---|---|---|---|
-| 2026 | Language-Forcing | Language-aligned world/action representations | [Paper](https://arxiv.org/abs/2610.23894) | — | Pending |
+| 2026 | Language-Forcing | Use frozen VLM semantic progress supervision for whole-body WAM | [Paper](https://arxiv.org/abs/2610.23894) | — | Reviewed |
 
 ### Action conditioning
 
 | Year | Paper / method | Main intervention | Paper | Code / project | Evidence |
 |---|---|---|---|---|---|
 | 2026 | Action Forcing | Recover egomotion control axes from unlabeled videos | [Paper](https://arxiv.org/abs/2609.30595) | — | Reviewed |
-| 2026 | Delta Forcing | Mechanism not yet verified | — | [Source](https://github.com/wyhallenwu/DeltaForcing) | Secondary only |
+| 2026 | Delta Forcing | Trust-gated distribution matching to balance interactive reactivity and stability | [Paper](https://arxiv.org/abs/2605.14382) | [Source](https://github.com/wyhallenwu/DeltaForcing) | Reviewed |
 | 2026 | WorldSync (Action-Forcing) | Action-forcing expert and intervention-effect alignment | [Paper](https://arxiv.org/abs/2608.24885) | — | Reviewed |
 
 ### Action representation
 
 | Year | Paper / method | Main intervention | Paper | Code / project | Evidence |
 |---|---|---|---|---|---|
-| 2026 | Discrete Forcing | Discrete guidance for continuous action | [Paper](https://arxiv.org/abs/2609.39526) | [Source](https://github.com/XPolicyLab/XPolicyLab/blob/main/policy/Discrete_Forcing/README.md) | Pending |
+| 2026 | Discrete Forcing | Predict discrete action structure before continuous flow refinement | [Paper](https://arxiv.org/abs/2609.39526) | [Source](https://github.com/XPolicyLab/XPolicyLab/blob/main/policy/Discrete_Forcing/README.md) | Reviewed |
 
 ### Future prediction
 
@@ -95,11 +95,11 @@ All **33 entries** are shown below. **Reviewed** means source-level bibliographi
 
 | Year | Paper / method | Main intervention | Paper | Code / project | Evidence |
 |---|---|---|---|---|---|
-| 2026 | Neighbor Forcing (SoulX-LiveAct) | Mechanism not yet verified | — | [Source](https://github.com/Soul-AILab/SoulX-LiveAct) | Secondary only |
+| 2026 | Neighbor Forcing (SoulX-LiveAct) | Diffusion-step-consistent neighbor latents with ConvKV memory | [Paper](https://arxiv.org/abs/2603.11746) | [Source](https://github.com/Soul-AILab/SoulX-LiveAct) | Reviewed |
 | 2026 | RECAP-Forcing | Novelty-based appearance-indexed KV memory | [Paper](https://arxiv.org/abs/2608.26671) | [Source](https://github.com/xXuHaiyang/RECAP-Forcing) | Reviewed |
 | 2026 | Recency Forcing | Time-step dependent temporal response bias for KV eviction alignment | [Paper](https://arxiv.org/abs/2609.19729) | — | Reviewed |
 | 2025 | Memory Forcing | Minecraft geometry-indexed spatial memory and chained forward training | [Paper](https://arxiv.org/abs/2510.03198) | [Source](https://junchao-cs.github.io/MemoryForcing-demo/) | Reviewed |
-| 2025 | Pack and Force Your Memory | Mechanism not yet verified | — | [Source](https://wuxiaofei01.github.io/PFVG/) | Secondary only |
+| 2025 | Pack and Force Your Memory | MemoryPack global retrieval plus Direct Forcing to reduce exposure bias | [Paper](https://arxiv.org/abs/2510.01784) | [Source](https://wuxiaofei01.github.io/PFVG/) | Reviewed |
 
 ### Inference & KV cache
 
@@ -113,7 +113,7 @@ All **33 entries** are shown below. **Reviewed** means source-level bibliographi
 | 2026 | Pyramid Forcing | Head-aware temporal KV policies | [Paper](https://arxiv.org/abs/2605.13111) | [Source](https://github.com/IF-LAB-PKU/Pyramid-Forcing) | Reviewed |
 | 2026 | Speculative Forcing | Early accept converged tokens, skip remaining denoising steps | [Paper](https://arxiv.org/abs/2610.22347) | [Source](https://github.com/naver-ai/speculative-forcing) | Reviewed |
 
-**Coverage:** 33/33 indexed records, including 8 entries not yet primary-reviewed. See [machine-readable metadata](data/papers.csv) and [fine-grained code / checkpoint status](data/release-audit.csv).
+**Coverage:** 33/33 indexed records with primary papers verified. Public code and checkpoint availability are recorded separately; execution verification remains pending.
 
 ## Release & reproducibility evidence
 
