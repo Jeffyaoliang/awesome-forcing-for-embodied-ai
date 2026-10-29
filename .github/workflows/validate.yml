@@ -1,4 +1,5 @@
 name: Validate paper index
+# Reports are written to reports/validation-status.json after each push run.
 on:
   push:
     paths:
