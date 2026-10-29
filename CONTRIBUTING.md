@@ -2,6 +2,8 @@
 
 We welcome paper suggestions, metadata corrections and independently reproducible experiments.
 
+See the formal [Inclusion & Editorial Policy](docs/INCLUSION_CRITERIA.md) and [Changelog](CHANGELOG.md). Monthly summaries should use [the digest template](docs/monthly-digest-template.md).
+
 ## Inclusion standards
 
 1. Identify a **specific technical intervention** (training conditions, history distributions, geometry/action/language supervision, memory, sampling or cache control). A paper's title alone is not enough.
