@@ -14,7 +14,7 @@ def read_csv(path):
 fields, papers = read_csv("data/papers.csv")
 release_fields, releases = read_csv("data/release-audit.csv")
 errors = []
-required = {"title", "year", "paper_url", "code_url", "mechanism_family", "verification"}
+required = {"title", "year", "paper_url", "code_url", "mechanism_family", "verification", "embodied_relevance"}
 errors.extend("Missing column: " + c for c in required - set(fields))
 release_index = {r.get("title", "").casefold(): r for r in releases}
 seen_titles, seen_ids = set(), set()
@@ -26,6 +26,8 @@ for n, row in enumerate(papers, 2):
     seen_titles.add(name)
     if not re.fullmatch(r"20[0-9]{2}", row.get("year", "")):
         errors.append(f"{title}: invalid year")
+    if row.get("embodied_relevance") not in {"core", "transferable", "adjacent"}:
+        errors.append(f"{title}: invalid embodied_relevance")
     if not row.get("mechanism_family") or not row.get("verification"):
         errors.append(f"{title}: missing classification/verification")
     if not row.get("paper_url"):
