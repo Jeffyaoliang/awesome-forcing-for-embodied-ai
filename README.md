@@ -6,6 +6,32 @@ A curated **mechanism-first** paper list of Forcing methods in embodied AI, robo
 
 [Browse paper index](data/papers.csv) · [Code, checkpoints & evaluation](data/release-audit.csv) · [Contribute](CONTRIBUTING.md)
 
+## Contents
+
+- [Start here: 8 essential papers](#start-here-8-essential-papers)
+- [Embodied relevance](#embodied-relevance)
+- [Taxonomy](#taxonomy)
+- [Papers by embodied relevance](#papers-by-embodied-relevance)
+- [Evidence and reproducibility](#release--reproducibility-evidence)
+- [Maintenance and contributing](#maintenance)
+
+## Start here: 8 essential papers
+
+A suggested learning path, **not a ranking**. Start with general sequence training, then move toward geometry, physics, action fidelity and robot WAMs.
+
+| Step | Paper | Why it matters |
+|---:|---|---|
+| 1 | [Diffusion Forcing](https://arxiv.org/abs/2407.01392) | Shows how different tokens can receive different noise levels in sequential diffusion. |
+| 2 | [Self Forcing](https://arxiv.org/abs/2506.08009) | Addresses exposure bias by learning from model-generated histories. |
+| 3 | [Rolling Forcing](https://arxiv.org/abs/2509.25161) | Introduces rolling-window denoising for long, streaming predictions. |
+| 4 | [Geometry Forcing](https://arxiv.org/abs/2507.07982) | Injects geometric priors into video generation and representation learning. |
+| 5 | [PhysisForcing](https://arxiv.org/abs/2606.28128) | Adds physical consistency objectives to embodied world modeling. |
+| 6 | [WorldSync (Action-Forcing)](https://arxiv.org/abs/2608.24885) | Tests and improves whether a world model actually follows given actions. |
+| 7 | [Next Forcing](https://arxiv.org/abs/2606.11187) | Uses multi-chunk future prediction in causal world/action modeling. |
+| 8 | [Language-Forcing](https://arxiv.org/abs/2610.23894) | Adds semantic progress supervision to whole-body world/action models. |
+
+**Legend:** Paper verified = bibliographic identity reviewed. **Implementation available** = an author-attributable public code implementation was found. **Project only** = landing page, placeholder or release announcement. **Unconfirmed** = no sufficient evidence. None of these implies a successful reproduction.
+
 ## Embodied relevance
 
 | Scope | Count | Inclusion rule |
@@ -35,7 +61,9 @@ The term **Forcing** is used for different interventions, not a single unified t
 
 The list is ordered by **embodied relevance**. Mechanisms are still shown within each tier; labels are editorial and not performance rankings.
 
-### Core Embodied — Robot Learning & World Action Models (9)
+<details open>
+<summary><strong>Direct robot learning, manipulation, navigation, and WAM studies</strong> — 9 papers</summary>
+
 
 Directly targets robotic control, manipulation, navigation, or robot WAMs.
 
@@ -83,7 +111,11 @@ Directly targets robotic control, manipulation, navigation, or robot WAMs.
 | 2026 | AR Forcing | Autoregressive training with model-generated navigation context | [Paper](https://arxiv.org/abs/2605.31314) | — | reviewed |
 | 2026 | Step Forcing (RoboWorld) | Anchored and one-step self-forwarded robot rollout contexts | [Paper](https://arxiv.org/abs/2607.01060) | [Source](https://byeongguks.github.io/RoboWorld/) | reviewed |
 
-### Transferable World Models (14)
+</details>
+
+<details>
+<summary><strong>General world/video modeling that may transfer to embodied learning</strong> — 14 papers</summary>
+
 
 General video/world-model approaches potentially applicable to robot learning.
 
@@ -131,7 +163,11 @@ General video/world-model approaches potentially applicable to robot learning.
 |---|---|---|---|---|---|
 | 2026 | Delta Forcing | Trust-gated distribution matching to balance interactive reactivity and stability | [Paper](https://arxiv.org/abs/2605.14382) | [Source](https://github.com/wyhallenwu/DeltaForcing) | reviewed |
 
-### Adjacent Video Generation & Systems (10)
+</details>
+
+<details>
+<summary><strong>Video generation, streaming memory and inference-system optimization</strong> — 10 papers</summary>
+
 
 Inference, memory, and generation systems; robotic task gains should not be inferred.
 
@@ -156,6 +192,8 @@ Inference, memory, and generation systems; robotic task gains should not be infe
 | 2026 | Recency Forcing | Time-step dependent temporal response bias for KV eviction alignment | [Paper](https://arxiv.org/abs/2609.19729) | — | reviewed |
 
 **Coverage:** 33 entries (9 core, 14 transferable, 10 adjacent). Source-level review is separate from code availability and reproducibility; see [release-audit.csv](data/release-audit.csv).
+
+</details>
 
 ## Release & reproducibility evidence
 
