@@ -26,6 +26,7 @@ jobs:
         id: candidate_branch
         run: |
           cp data/discovered-candidates.md "$RUNNER_TEMP/discovered-candidates.md"
+          git restore data/discovered-candidates.md
           git fetch origin bot/arxiv-candidates
           git checkout -B bot/arxiv-candidates origin/bot/arxiv-candidates
           cp "$RUNNER_TEMP/discovered-candidates.md" data/discovered-candidates.md
