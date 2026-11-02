@@ -4,6 +4,10 @@ Automatically discovered, **not verified or endorsed**.
 
 Query: `ti:"Forcing" AND (all:"video" OR all:"robot" OR all:"world model" OR all:"diffusion")`
 
+- 2026-10-30 · [Any Forcing: Any-Step Generality and One-Step Stability for Autoregressive Video Generation](https://arxiv.org/abs/2610.42031)
+- 2026-10-29 · [Language-Grounded Force/Torque Pretraining for Extrinsic Contact Perception](https://arxiv.org/abs/2610.39314)
+- 2026-10-28 · [Finite-time minimum-work protocols for underdamped traps driven by active forces](https://arxiv.org/abs/2610.38653)
+- 2026-10-28 · [Force-Driven Hook Disassembly via Constraint-Aware Object-Centric Reinforcement Learning](https://arxiv.org/abs/2610.38513)
 - 2026-10-27 · [Time-Periodic Chemotaxis in Shifting Environments: Propagation and Planar Forced Waves in $\R^N$](https://arxiv.org/abs/2610.36627)
 - 2026-10-26 · [Learning Force-Reactive Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.35862)
 - 2026-10-26 · [Beyond Distribution Matching: Self-Supervised Representation Forcing for Few-Step Video Generation](https://arxiv.org/abs/2610.35594)
@@ -92,6 +96,3 @@ Query: `ti:"Forcing" AND (all:"video" OR all:"robot" OR all:"world model" OR all
 - 2026-09-02 · [Real-Time Dynamics-Based Torque-Sampling MPPI for Compliant and Force Aware Manipulation](https://arxiv.org/abs/2609.02020)
 - 2026-09-01 · [A Compact Robotic Finger with 2-DoF MCP Joint Embedding DoF-Selective Passive Continuously Variable Transmission for Wide Force-Speed Operating Range](https://arxiv.org/abs/2609.00769)
 - 2026-08-31 · [Endpoint Energy Atoms Force Local Pressure Concentration in Three-Dimensional Navier-Stokes Flow](https://arxiv.org/abs/2608.30715)
-- 2026-08-31 · [Temporal Forcing: 4D Representation Alignment for Vision-Language-Action Models](https://arxiv.org/abs/2608.30643)
-- 2026-08-27 · [Ring Forcing: Towards Precise Long-Term Memory for Autoregressive Video Diffusion](https://arxiv.org/abs/2608.26794)
-- 2026-08-25 · [Simultaneous inference of environmental and interaction forces in collective dynamics](https://arxiv.org/abs/2608.25181)
